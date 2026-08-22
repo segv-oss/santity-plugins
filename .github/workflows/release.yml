@@ -1,17 +1,17 @@
-name: CI
+name: Matrix Release Plugin Components
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    tags:
+      - 'v*'
+  workflow_dispatch:
 
-env:
-  CARGO_TERM_COLOR: always
+permissions:
+  contents: write
 
 jobs:
-  build-matrix:
-    name: Build Plugin Components
+  build-and-release:
+    name: Build & Release Plugin Matrix
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,12 +20,22 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
+
       - uses: taiki-e/install-action@wasm-tools
-      - name: Build Plugin WASM Target
+
+      - name: Build Plugin WASM Binary
         run: cargo build --release --target wasm32-unknown-unknown -p ${{ matrix.plugin }}-plugin
+
       - name: Package WebAssembly Component
         run: |
           wasm-tools component new target/wasm32-unknown-unknown/release/${{ matrix.plugin }}_plugin.wasm -o ${{ matrix.plugin }}.component.wasm
+
+      - name: Upload Component Asset to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ matrix.plugin }}.component.wasm
+          generate_release_notes: true
