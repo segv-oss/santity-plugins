@@ -32,3 +32,9 @@ jobs:
       - name: Package WebAssembly Component
         run: |
           wasm-tools component new target/wasm32-unknown-unknown/release/${{ matrix.wasm_file }}.wasm -o ${{ matrix.component_name }}.component.wasm
+
+      - name: Upload Component Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.component_name }}.component.wasm
+          path: ${{ matrix.component_name }}.component.wasm

@@ -2,6 +2,7 @@ name: Matrix Release Plugin Components
 
 on:
   push:
+    branches: [ main ]
     tags:
       - 'v*'
   workflow_dispatch:
@@ -40,5 +41,7 @@ jobs:
       - name: Upload Component Asset to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || 'nightly' }}
+          name: ${{ github.ref_type == 'tag' && github.ref_name || 'Nightly Development Build' }}
           files: ${{ matrix.component_name }}.component.wasm
           generate_release_notes: true
