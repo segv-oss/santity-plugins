@@ -1,0 +1,47 @@
+# Rust & Cargo Build Artifacts
+/target/
+**/*.rs.bk
+
+# WebAssembly Bytecode & Component Binaries
+*.wasm
+*.wat
+*.component.wasm
+
+# Local Environment, Secrets & Bot Tokens
+.env
+.env.*
+*.env
+*.pem
+*.key
+config.toml
+config*.toml
+!config.example.toml
+
+# Local SQLite Storage Databases & WAL Files
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Development Journals & Logs
+JOURNAL.md
+*.log
+
+# Editor & IDE Directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.gemini/
+.claude/
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

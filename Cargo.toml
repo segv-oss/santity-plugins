@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = [
+    "plugins/ping_pong",
+]
+
+[workspace.dependencies]
+santity-pdk = { git = "https://github.com/segv-oss/santity-pdk" }
+log = "0.4"
+serde = { version = "1.0", features = ["derive"] }
