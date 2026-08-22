@@ -4,7 +4,7 @@ Official collection and automated CI/CD build repository for WebAssembly plugins
 
 ---
 
-## 🚀 One-Line Plugin Installation via `santity-cli`
+## 🚀 One-Line Plugin Installation via the `santity` CLI
 
 `santity-plugins` uses GitHub Actions CI/CD to automatically compile every plugin into WebAssembly Component Model binaries (`.component.wasm`) and publish them directly to GitHub Releases.
 
