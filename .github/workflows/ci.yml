@@ -15,7 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        plugin: [ ping_pong ]
+        include:
+          - pkg_name: ping-pong-plugin
+            wasm_file: ping_pong_plugin
+            component_name: ping_pong
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,7 +28,7 @@ jobs:
           targets: wasm32-unknown-unknown
       - uses: taiki-e/install-action@wasm-tools
       - name: Build Plugin WASM Target
-        run: cargo build --release --target wasm32-unknown-unknown -p ${{ matrix.plugin }}-plugin
+        run: cargo build --release --target wasm32-unknown-unknown -p ${{ matrix.pkg_name }}
       - name: Package WebAssembly Component
         run: |
-          wasm-tools component new target/wasm32-unknown-unknown/release/${{ matrix.plugin }}_plugin.wasm -o ${{ matrix.plugin }}.component.wasm
+          wasm-tools component new target/wasm32-unknown-unknown/release/${{ matrix.wasm_file }}.wasm -o ${{ matrix.component_name }}.component.wasm
