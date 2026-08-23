@@ -146,8 +146,8 @@ dependencies = [
 
 [[package]]
 name = "santity-pdk"
-version = "0.1.0"
-source = "git+https://github.com/segv-oss/santity-pdk#8f45b30be1d0bf0d995e93c7b017e53b386eaa78"
+version = "0.2.0"
+source = "git+https://github.com/segv-oss/santity-pdk#8ba14d313e1035ee67af7bc40a45a0ce461e0529"
 dependencies = [
  "log",
  "santity-pdk-macro",
@@ -159,8 +159,8 @@ dependencies = [
 
 [[package]]
 name = "santity-pdk-macro"
-version = "0.1.0"
-source = "git+https://github.com/segv-oss/santity-pdk#8f45b30be1d0bf0d995e93c7b017e53b386eaa78"
+version = "0.2.0"
+source = "git+https://github.com/segv-oss/santity-pdk#8ba14d313e1035ee67af7bc40a45a0ce461e0529"
 dependencies = [
  "proc-macro2",
  "quote",
