@@ -1,0 +1,13 @@
+[package]
+name = "buttons-demo-plugin"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Rich messaging demo: embed panel with role buttons and ephemeral confirmations"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+santity-pdk = { workspace = true }
+log = { workspace = true }
