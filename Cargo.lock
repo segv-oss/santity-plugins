@@ -109,7 +109,7 @@ checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
 
 [[package]]
 name = "ping-pong-plugin"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "log",
  "santity-pdk",
@@ -166,7 +166,7 @@ dependencies = [
 
 [[package]]
 name = "santity-pdk"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "log",
  "santity-pdk-macro",
@@ -178,7 +178,7 @@ dependencies = [
 
 [[package]]
 name = "santity-pdk-macro"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "proc-macro2",
  "quote",

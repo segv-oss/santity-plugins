@@ -36,8 +36,10 @@ jobs:
             component_name: santity_voicemaster
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          submodules: recursive
+          repository: segv-oss/santity-pdk
+          path: ../santity-pdk
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
