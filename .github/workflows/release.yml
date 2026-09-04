@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    working-directory: santity-plugins
+
 jobs:
   build-and-release:
     name: Build & Release Plugin Matrix
@@ -37,10 +41,13 @@ jobs:
             component_name: santity_voicemaster
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: santity-plugins
+
       - uses: actions/checkout@v4
         with:
           repository: segv-oss/santity-pdk
-          path: ../santity-pdk
+          path: santity-pdk
 
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -60,5 +67,5 @@ jobs:
         with:
           tag_name: ${{ github.ref_type == 'tag' && github.ref_name || 'nightly' }}
           name: ${{ github.ref_type == 'tag' && github.ref_name || 'Nightly Development Build' }}
-          files: ${{ matrix.component_name }}.component.wasm
+          files: santity-plugins/${{ matrix.component_name }}.component.wasm
           generate_release_notes: true

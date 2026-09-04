@@ -9,6 +9,10 @@ on:
 env:
   CARGO_TERM_COLOR: always
 
+defaults:
+  run:
+    working-directory: santity-plugins
+
 jobs:
   build-matrix:
     name: Build Plugin Components
@@ -36,10 +40,12 @@ jobs:
             component_name: santity_voicemaster
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: santity-plugins
       - uses: actions/checkout@v4
         with:
           repository: segv-oss/santity-pdk
-          path: ../santity-pdk
+          path: santity-pdk
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
@@ -54,4 +60,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.component_name }}.component.wasm
-          path: ${{ matrix.component_name }}.component.wasm
+          path: santity-plugins/${{ matrix.component_name }}.component.wasm
