@@ -19,6 +19,21 @@ jobs:
           - pkg_name: ping-pong-plugin
             wasm_file: ping_pong_plugin
             component_name: ping_pong
+          - pkg_name: santity-mod
+            wasm_file: santity_mod
+            component_name: santity_mod
+          - pkg_name: santity-guard
+            wasm_file: santity_guard
+            component_name: santity_guard
+          - pkg_name: santity-tickets
+            wasm_file: santity_tickets
+            component_name: santity_tickets
+          - pkg_name: santity-roles
+            wasm_file: santity_roles
+            component_name: santity_roles
+          - pkg_name: santity-voicemaster
+            wasm_file: santity_voicemaster
+            component_name: santity_voicemaster
     steps:
       - uses: actions/checkout@v4
         with:

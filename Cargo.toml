@@ -2,9 +2,15 @@
 resolver = "2"
 members = [
     "plugins/ping_pong",
+    "plugins/santity_mod",
+    "plugins/santity_guard",
+    "plugins/santity_tickets",
+    "plugins/santity_roles",
+    "plugins/santity_voicemaster",
 ]
 
 [workspace.dependencies]
-santity-pdk = { git = "https://github.com/segv-oss/santity-pdk" }
+santity-pdk = { path = "../santity-pdk/crates/sdk" }
 log = "0.4"
 serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

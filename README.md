@@ -1,21 +1,19 @@
 # santity-plugins
 
-Official collection and automated CI/CD build repository for WebAssembly plugins compatible with the [Santity](https://github.com/segv-oss/santity-core) runtime engine.
+Official collection and automated CI/CD build repository for WebAssembly plugins compatible with the Santity runtime engine.
 
 ---
 
-## 🚀 One-Line Plugin Installation via the `santity` CLI
+## Plugin Installation via the `santity` CLI
 
-`santity-plugins` uses GitHub Actions CI/CD to automatically compile every plugin into WebAssembly Component Model binaries (`.component.wasm`) and publish them directly to GitHub Releases.
-
-You can install official compiled plugins directly from GitHub Releases into your live Santity engine with one command:
+`santity-plugins` uses CI/CD pipelines to compile plugins into WebAssembly Component Model binaries (`.component.wasm`) and publish them directly to releases:
 
 ```bash
 # 1. Start Santity daemon
 santity up
 
-# 2. Install plugin directly from GitHub Release URL
-santity plugin add https://github.com/segv-oss/santity-plugins/releases/latest/download/ping_pong.component.wasm
+# 2. Install plugin directly from release binary or local build
+santity plugin add https://github.com/segv-oss/santity-plugins/releases/latest/download/santity_guard.component.wasm
 
 # 3. Monitor live dashboard
 santity ui
@@ -23,28 +21,33 @@ santity ui
 
 ---
 
-## 📦 Official Plugins Registry
+## Official Plugins Registry
 
-| Plugin | Description | Release Binary |
-| :--- | :--- | :--- |
-| **`ping_pong`** | Ping-pong plugin featuring persistent counter storage, logging, and slash commands. | `ping_pong.component.wasm` |
+| Plugin | Capabilities | Description |
+|:---|:---|:---|
+| **`ping_pong`** | None | Health and latency probe with interactive button refresh and persistent counter storage |
+| **`santity_mod`** | `ban_members`, `kick_members`, `moderate_members` | Enterprise moderation actions, reason logging, and atomic sequential case ID tracking |
+| **`santity_guard`** | `ban_members`, `kick_members`, `manage_channels`, `view_audit_log` | Anti-nuke and anti-raid defense engine with sliding-window audit log caching |
+| **`santity_tickets`** | `manage_channels`, `send_messages` | Dynamic ticket intake panels, modal submission forms, and private channel dispatch |
+| **`santity_roles`** | `manage_roles` | Interactive self-assignable button role panels with atomic toggle state |
+| **`santity_voicemaster`** | `manage_channels` | Join-to-Create dynamic temporary voice room generator and automatic ghost channel garbage collector |
 
 ---
 
-## 🛠️ Building & Releasing Plugins (CI/CD)
+## Building Locally
 
-Whenever a version tag (e.g. `v0.1.0`) is pushed to `santity-plugins`, GitHub Actions automatically:
-1. Compiles Rust guest code to `wasm32-unknown-unknown`.
-2. Packages the binary using `wasm-tools component new`.
-3. Uploads the final `${plugin_name}.component.wasm` asset to GitHub Releases.
+### Prerequisites
+- Rust stable toolchain
+- Target: `rustup target add wasm32-unknown-unknown`
+- `cargo install cargo-component`
 
-To build locally:
+### Build All Plugins
 ```bash
-santity build --release
+cargo build --workspace --target wasm32-unknown-unknown --release
 ```
 
 ---
 
-## 📜 License
+## License
 
 Dual-licensed under [MIT](LICENSE-MIT) or [Apache 2.0](LICENSE-APACHE).

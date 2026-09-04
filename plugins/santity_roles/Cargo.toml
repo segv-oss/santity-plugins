@@ -1,5 +1,5 @@
 [package]
-name = "ping-pong-plugin"
+name = "santity-roles"
 version = "0.2.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
@@ -11,3 +11,4 @@ crate-type = ["cdylib"]
 santity-pdk = { workspace = true }
 log = { workspace = true }
 serde = { workspace = true }
+serde_json = { workspace = true }
